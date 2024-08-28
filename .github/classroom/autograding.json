@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Test Hei",
+      "setup": "",
+      "run": "python -m unittest tests/testHei.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Test Sphere",
+      "setup": "",
+      "run": "python -m unittest tests/testSphere.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Test Sphere or Cube",
+      "setup": "",
+      "run": "python -m unittest tests/testSphereOrCube.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Test Odds or Evens",
+      "setup": "",
+      "run": "python -m unittest tests/testOddsOrEvens.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 3
+    },
+    {
+      "name": "Test Madlib",
+      "setup": "",
+      "run": "python -m unittest tests/testMadLib.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 3
+    },
+    {
+      "name": "Test Receipt",
+      "setup": "",
+      "run": "python -m unittest tests/testReceipt.py",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 3
+    }
+  ]
+}
