@@ -1,0 +1,80 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test Hei
+      id: test-hei
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Hei
+        setup-command: ''
+        command: python -m unittest tests/testHei.py
+        timeout: 1
+        max-score: 1
+    - name: Test Sphere
+      id: test-sphere
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Sphere
+        setup-command: ''
+        command: python -m unittest tests/testSphere.py
+        timeout: 1
+        max-score: 1
+    - name: Test Sphere or Cube
+      id: test-sphere-or-cube
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Sphere or Cube
+        setup-command: ''
+        command: python -m unittest tests/testSphereOrCube.py
+        timeout: 1
+        max-score: 1
+    - name: Test Odds or Evens
+      id: test-odds-or-evens
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Odds or Evens
+        setup-command: ''
+        command: python -m unittest tests/testOddsOrEvens.py
+        timeout: 1
+        max-score: 1
+    - name: Test Mad Lib
+      id: test-mad-lib
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Mad Lib
+        setup-command: ''
+        command: python -m unittest tests/testMadLib.py
+        timeout: 1
+        max-score: 1
+    - name: Test Receipt
+      id: test-receipt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Receipt
+        setup-command: ''
+        command: python -m unittest tests/testReceipt.py
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-HEI_RESULTS: "${{steps.test-hei.outputs.result}}"
+        TEST-SPHERE_RESULTS: "${{steps.test-sphere.outputs.result}}"
+        TEST-SPHERE-OR-CUBE_RESULTS: "${{steps.test-sphere-or-cube.outputs.result}}"
+        TEST-ODDS-OR-EVENS_RESULTS: "${{steps.test-odds-or-evens.outputs.result}}"
+        TEST-MAD-LIB_RESULTS: "${{steps.test-mad-lib.outputs.result}}"
+        TEST-RECEIPT_RESULTS: "${{steps.test-receipt.outputs.result}}"
+      with:
+        runners: test-hei,test-sphere,test-sphere-or-cube,test-odds-or-evens,test-mad-lib,test-receipt
